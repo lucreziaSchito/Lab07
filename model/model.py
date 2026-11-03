@@ -21,8 +21,14 @@ class Model:
     def get_generi(self):
         """Restituisce la lista di tutti i generi."""
         # TODO
+        lista_generi = []
+        for i in self._libro_dao.read_book_from_db() :
+            if i.genere not in lista_generi:
+                lista_generi.append(i.genere)
+        return lista_generi
 
     # --- BIBLIOTECHE ---
     def get_biblioteche(self):
         """ Restituisce la lista di tutte le biblioteche."""
         # TODO
+        return self._biblioteca_dao.read_library_from_db()

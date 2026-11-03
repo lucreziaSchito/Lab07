@@ -19,12 +19,24 @@ class Controller:
 
     # POPOLA DROPDOWN
     # TODO
-    def handler_ddBiblioteca(self):
-        self._view.elemento_dropdown.options.append(ft.dropdown.Option("Scelta 1"))
-        pass
+    def popola_genere(self):
+        generi = self._model.get_generi()
+        for genere in generi :
+            self._view._ddGenere.options.append(ft.dropdown.Option(f"{genere}"))
+        self._view.update()
+
+    def popola_biblioteca(self):
+        biblio = self._model.get_biblioteche()
+        for b in biblio :
+            self._view._ddBiblioteca.options.append(ft.dropdown.Option(f"{b}"))
+        self._view.update()
 
     # CALLBACKS DROPDOWN
     # TODO
+    def handler_ddBiblioteca(self):
+        pass
+    def handler_ddGenere(self):
+        pass
 
     # AZIONE: MOSTRA LIBRI
     # TODO

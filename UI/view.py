@@ -37,7 +37,10 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
-        self._ddBiblioteca = ft.Dropdown(width=220, label="Biblioteca", on_select=self.controller.handler_ddBiblioteca)
+        self._ddBiblioteca = ft.Dropdown(width=400, label="Biblioteca", on_select=self.controller.handler_ddBiblioteca)
+        self.controller.popola_biblioteca()
+        self._ddGenere = ft.Dropdown(width=220, label="Genere", on_select=self.controller.handler_ddGenere)
+        self.controller.popola_genere()
 
         # Sezione 3: Libri
         # TODO
@@ -55,8 +58,7 @@ class View:
 
             # Sezione 2: Filtraggio
             # TODO
-            ft.Row(spacing=200,
-                   controls=[self._ddBiblioteca],
+            ft.Row(controls=[self._ddBiblioteca, self._ddGenere],
                    alignment=ft.MainAxisAlignment.CENTER),
             ft.Divider(),
 

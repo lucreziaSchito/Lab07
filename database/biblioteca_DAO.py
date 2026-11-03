@@ -11,8 +11,7 @@ class BibliotecaDAO:
         pass
 
     def read_library_from_db(self):
-        db = DBConnect()
-        connessione = db.get_connection()
+        connessione = DBConnect.get_connection()
         cursor = connessione.cursor()
 
         query = "SELECT * FROM biblioteca"
