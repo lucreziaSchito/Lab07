@@ -10,4 +10,20 @@ class BibliotecaDAO:
     def __init__(self):
         pass
 
-    # TODO
+    def read_library_from_db(self):
+        db = DBConnect()
+        connessione = db.get_connection()
+        cursor = connessione.cursor()
+
+        query = "SELECT * FROM biblioteca"
+        cursor.execute(query)
+
+        lista_biblioteche = []
+        for i in cursor :
+            biblioteca = Biblioteca(i[0], i[1], i[2])
+            lista_biblioteche.append(biblioteca)
+
+        cursor.close()
+        connessione.close()
+        return lista_biblioteche
+

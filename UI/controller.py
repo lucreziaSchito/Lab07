@@ -19,6 +19,9 @@ class Controller:
 
     # POPOLA DROPDOWN
     # TODO
+    def handler_ddBiblioteca(self):
+        self._view.elemento_dropdown.options.append(ft.dropdown.Option("Scelta 1"))
+        pass
 
     # CALLBACKS DROPDOWN
     # TODO

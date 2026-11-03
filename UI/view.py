@@ -37,6 +37,7 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
+        self._ddBiblioteca = ft.Dropdown(width=220, label="Biblioteca", on_select=self.controller.handler_ddBiblioteca)
 
         # Sezione 3: Libri
         # TODO
@@ -54,6 +55,10 @@ class View:
 
             # Sezione 2: Filtraggio
             # TODO
+            ft.Row(spacing=200,
+                   controls=[self._ddBiblioteca],
+                   alignment=ft.MainAxisAlignment.CENTER),
+            ft.Divider(),
 
             # Sezione 3: Libri
             # TODO
