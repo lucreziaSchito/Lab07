@@ -33,18 +33,25 @@ class Controller:
 
     # CALLBACKS DROPDOWN
     # TODO
+    # aggiornano lo stato interno non appena l'utente effettua una scelta
     def handler_ddBiblioteca(self, e):
-        pass
+        self.biblioteca_selezionata = e.control.value
+
     def handler_ddGenere(self, e):
-        pass
+        self.genere_selezionato = e.control.value
 
     # AZIONE: MOSTRA LIBRI
     # TODO
-    def mostra_libri(self, e):
-        biblio_sel = self._view._ddBiblioteca.value
-        genere_sel = self._view._ddGenere.value
 
-        libri = self._model.get_libri_filtrati(biblio_sel, genere_sel)
+    # I valori self.biblioteca_selezionata e self.genere_selezionato
+    # sono già stati aggiornati dagli handler soprastanti. Non interroghiamo più la View.
+    def mostra_libri(self, e):
+
+        if self.biblioteca_selezionata is None or self.genere_selezionato is None:
+            self._view.show_alert("Inserire i filtri prima di proseguire")
+            return
+
+        libri = self._model.get_libri_filtrati(self.biblioteca_selezionata, self.genere_selezionato)
         # Pulisco i risultati della ricerca precedente
         self._view._lista_libri.controls.clear()
 
