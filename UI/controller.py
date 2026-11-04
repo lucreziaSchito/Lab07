@@ -33,10 +33,24 @@ class Controller:
 
     # CALLBACKS DROPDOWN
     # TODO
-    def handler_ddBiblioteca(self):
+    def handler_ddBiblioteca(self, e):
         pass
-    def handler_ddGenere(self):
+    def handler_ddGenere(self, e):
         pass
 
     # AZIONE: MOSTRA LIBRI
     # TODO
+    def mostra_libri(self, e):
+        biblio_sel = self._view._ddBiblioteca.value
+        genere_sel = self._view._ddGenere.value
+
+        libri = self._model.get_libri_filtrati(biblio_sel, genere_sel)
+        # Pulisco i risultati della ricerca precedente
+        self._view._lista_libri.controls.clear()
+
+        if len(libri) > 0 :
+            self._view._lista_libri.controls = [ft.Text(f"{libro}") for libro in libri]
+            # utilizzo di una list comprehension
+        else:
+            self._view.show_alert("Nessun libro trovato che soddisfi questi filtri")
+        self._view.update()
